@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:islami/QURAN/quran_details_veiw.dart';
 import 'package:islami/QURAN/widget/sura_card.dart';
 import 'package:islami/core/gen/assets.gen.dart';
 import 'package:islami/core/theme/color_pallete.dart';
 import 'package:islami/models/sura_data.dart';
 
 class QuranView extends StatefulWidget {
+  static const String routName = "/QURAN_VEIW";
   const QuranView({super.key});
 
   @override
@@ -495,7 +497,10 @@ class _QuranViewState extends State<QuranView> {
               physics: const NeverScrollableScrollPhysics(),
               padding: EdgeInsets.zero,
               itemBuilder: (context, index) {
-                return SuraCard(suraData: suralist[index]);
+                return SuraCard(suraData: suralist[index], onTap: () {
+                  Navigator.of(context).pushNamed(
+                      QuranDetailsVeiw.routName, arguments: suralist[index]);
+                },);
               },
               separatorBuilder: (context, index) {
                 return Divider(

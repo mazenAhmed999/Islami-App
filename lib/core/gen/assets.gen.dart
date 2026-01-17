@@ -110,13 +110,25 @@ class $AssetsImagesGen {
   AssetGenImage get headerIntro =>
       const AssetGenImage('assets/images/header_intro.png');
 
+  /// File path: assets/images/img_bottom_decoration.png
+  AssetGenImage get imgBottomDecoration =>
+      const AssetGenImage('assets/images/img_bottom_decoration.png');
+
   /// File path: assets/images/img_header.png
   AssetGenImage get imgHeader =>
       const AssetGenImage('assets/images/img_header.png');
 
+  /// File path: assets/images/img_left_corner.png
+  AssetGenImage get imgLeftCorner =>
+      const AssetGenImage('assets/images/img_left_corner.png');
+
   /// File path: assets/images/img_list_quran.png
   AssetGenImage get imgListQuran =>
       const AssetGenImage('assets/images/img_list_quran.png');
+
+  /// File path: assets/images/img_right_corner.png
+  AssetGenImage get imgRightCorner =>
+      const AssetGenImage('assets/images/img_right_corner.png');
 
   /// File path: assets/images/quran_background.png
   AssetGenImage get quranBackground =>
@@ -145,8 +157,11 @@ class $AssetsImagesGen {
     splashScreen,
     hadethBackground,
     headerIntro,
+    imgBottomDecoration,
     imgHeader,
+    imgLeftCorner,
     imgListQuran,
+    imgRightCorner,
     quranBackground,
     radioBackground,
     sebhaBackground,

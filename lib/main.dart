@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:islami/QURAN/quran_details_veiw.dart';
+import 'package:islami/QURAN/quran_view.dart';
 import 'package:islami/core/theme/theme_manager.dart';
 import 'package:islami/layout/layoutview.dart';
 
@@ -22,6 +24,8 @@ class MyApp extends StatelessWidget {
       routes: {
         IntroScreen.routName: (context) => IntroScreen(),
         Layoutview.routName: (context) => Layoutview(),
+        QuranView.routName: (context) => QuranView(),
+        QuranDetailsVeiw.routName: (context) => QuranDetailsVeiw(),
       },
     );
   }
