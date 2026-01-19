@@ -40,6 +40,7 @@ dependencies:
   flutter_svg: ^2.2.3
   introduction_screen: ^4.0.0
   flutter_bounceable: ^1.2.0
+  carousel_slider: ^5.1.1
 
 
 flutter_gen:
@@ -79,7 +80,8 @@ flutter:
   assets:
     - assets/images/
     - assets/icons/
-    - assets/files/
+    - assets/files/Quran/
+    - assets/files/Hadeth/
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
 

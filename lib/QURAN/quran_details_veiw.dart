@@ -18,7 +18,7 @@ class _QuranDetailsVeiwState extends State<QuranDetailsVeiw> {
   @override
   Widget build(BuildContext context) {
     SuraData suraData = ModalRoute.of(context)!.settings.arguments as SuraData;
-    _loadQuranTex(suraData.suraNumber.toString());
+    _loadQuranText(suraData.suraNumber.toString());
     return Scaffold(
       backgroundColor: ColorPallete.colorPage,
       appBar: AppBar(
@@ -82,9 +82,9 @@ class _QuranDetailsVeiwState extends State<QuranDetailsVeiw> {
 
   List<String> verses = [];
 
-  Future<void> _loadQuranTex(String suraNumber) async {
+  Future<void> _loadQuranText(String suraNumber) async {
     String quranText = await rootBundle.loadString(
-      "assets/files/$suraNumber.txt",
+      "assets/files/Quran$suraNumber.txt",
     );
     verses = quranText
         .split("\n")
