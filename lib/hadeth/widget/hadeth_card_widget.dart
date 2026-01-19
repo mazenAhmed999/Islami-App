@@ -5,6 +5,7 @@ import 'package:islami/models/hadeth_data.dart';
 import '../../core/gen/assets.gen.dart';
 
 class HadethCardWidget extends StatelessWidget {
+  static const String routName = "/hadethCarWidget";
   final HadethData hadethData;
 
   const HadethCardWidget({super.key, required this.hadethData});

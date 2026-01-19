@@ -4,6 +4,7 @@ import 'package:islami/core/theme/color_pallete.dart';
 import '../core/gen/assets.gen.dart';
 
 class SebhaView extends StatefulWidget {
+  static const String rotName = "/sebha_veiw";
 
   const SebhaView({super.key});
 
@@ -22,7 +23,7 @@ class _SebhaViewState extends State<SebhaView> {
 
   int counter = 0;
   int currentIndex = 0;
-  int angle = 0;
+  double angle = 0;
   final int contMax = 33;
 
   @override
