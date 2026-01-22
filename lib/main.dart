@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:islami/QURAN/quran_details_veiw.dart';
 import 'package:islami/QURAN/quran_view.dart';
 import 'package:islami/core/theme/theme_manager.dart';
-import 'package:islami/hadeth/widget/hadeth_card_widget.dart';
+// import 'package:islami/hadeth/widget/hadeth_card_widget.dart';
 import 'package:islami/layout/layoutview.dart';
 import 'package:islami/sebha/sebha_view.dart';
 
 import 'intruductin_model/introduction_screen.dart';
-import 'models/hadeth_data.dart';
+// import 'models/hadeth_data.dart';
 
 void main() {
   runApp(const MyApp());
@@ -31,16 +31,16 @@ class MyApp extends StatelessWidget {
         QuranDetailsVeiw.routName: (context) => QuranDetailsVeiw(),
         SebhaView.rotName: (context) => SebhaView(),
       },
-      onGenerateRoute: (settings) {
-        if (settings.name == HadethCardWidget.routName) {
-          final hadethData = settings.arguments as HadethData;
-
-          return MaterialPageRoute(
-            builder: (context) => HadethCardWidget(hadethData: hadethData),
-          );
-        }
-        return null;
-      },
+      // onGenerateRoute: (settings) {
+      //   if (settings.name == HadethCardWidget.routName) {
+      //     final hadethData = settings.arguments as HadethData;
+      //
+      //     return MaterialPageRoute(
+      //       builder: (context) => HadethCardWidget(hadethData: hadethData),
+      //     );
+      //   }
+      //   return null;
+      // },
     );
   }
 }

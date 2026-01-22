@@ -112,6 +112,10 @@ class $AssetsImagesGen {
   AssetGenImage get hadithCardBackGround1 =>
       const AssetGenImage('assets/images/HadithCardBackGround 1.png');
 
+  /// File path: assets/images/Mask group.png
+  AssetGenImage get maskGroup =>
+      const AssetGenImage('assets/images/Mask group.png');
+
   /// File path: assets/images/SebhaBody 1.png
   AssetGenImage get sebhaBody1 =>
       const AssetGenImage('assets/images/SebhaBody 1.png');
@@ -156,6 +160,10 @@ class $AssetsImagesGen {
   AssetGenImage get radioBackground =>
       const AssetGenImage('assets/images/radio_background.png');
 
+  /// File path: assets/images/radio_line.png
+  AssetGenImage get radioLine =>
+      const AssetGenImage('assets/images/radio_line.png');
+
   /// File path: assets/images/sebha_alama.png
   AssetGenImage get sebhaAlama =>
       const AssetGenImage('assets/images/sebha_alama.png');
@@ -177,6 +185,7 @@ class $AssetsImagesGen {
     frame3,
     group28,
     hadithCardBackGround1,
+    maskGroup,
     sebhaBody1,
     splashScreen,
     hadethBackground,
@@ -188,6 +197,7 @@ class $AssetsImagesGen {
     imgRightCorner,
     quranBackground,
     radioBackground,
+    radioLine,
     sebhaAlama,
     sebhaBackground,
     timeBackground,

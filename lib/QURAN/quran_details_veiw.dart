@@ -84,7 +84,7 @@ class _QuranDetailsVeiwState extends State<QuranDetailsVeiw> {
 
   Future<void> _loadQuranText(String suraNumber) async {
     String quranText = await rootBundle.loadString(
-      "assets/files/Quran$suraNumber.txt",
+      "assets/files/Quran/$suraNumber.txt",
     );
     verses = quranText
         .split("\n")

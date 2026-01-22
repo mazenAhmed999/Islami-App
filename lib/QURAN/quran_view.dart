@@ -14,6 +14,7 @@ class QuranView extends StatefulWidget {
 }
 
 class _QuranViewState extends State<QuranView> {
+
   List<SuraData> suralist = [];
 
   List<String> arabicAuranSuras = [
@@ -406,6 +407,14 @@ class _QuranViewState extends State<QuranView> {
             Padding(
               padding: const EdgeInsetsGeometry.symmetric(horizontal: 20),
               child: TextField(
+                style: Theme
+                    .of(context)
+                    .textTheme
+                    .titleLarge
+                    ?.copyWith(color: Colors.white, fontFamily: 'Janna',),
+                textDirection: TextDirection.rtl,
+                textAlign: TextAlign.right,
+
                 decoration: InputDecoration(
                   enabledBorder: OutlineInputBorder(
                     borderSide: BorderSide(color: ColorPallete.primaryColor),
