@@ -368,6 +368,9 @@ class _QuranViewState extends State<QuranView> {
     '6',
   ];
 
+  List<int>filterList = List.generate(114, (index) => index);
+
+
   @override
   void initState() {
     super.initState();
@@ -384,7 +387,9 @@ class _QuranViewState extends State<QuranView> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return Scaffold(
+      resizeToAvoidBottomInset: true,
+      body: Container(
       decoration: BoxDecoration(
         image: DecorationImage(
           image: Assets.images.quranBackground.provider(),
@@ -393,137 +398,188 @@ class _QuranViewState extends State<QuranView> {
       ),
       child: SingleChildScrollView(
         physics: ClampingScrollPhysics(),
-        child: Column(
-          spacing: 15,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Padding(
-              padding: const EdgeInsetsGeometry.symmetric(
-                horizontal: 20,
-                vertical: 12,
+        child: ConstrainedBox(
+          constraints: BoxConstraints(
+            minHeight: MediaQuery
+                .of(context)
+                .size
+                .height,
+          ),
+          child: Column(
+            spacing: 15,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Padding(
+                padding: const EdgeInsetsGeometry.symmetric(
+                  horizontal: 20,
+                  vertical: 12,
+                ),
+                child: Assets.images.imgHeader.image(),
               ),
-              child: Assets.images.imgHeader.image(),
-            ),
-            Padding(
-              padding: const EdgeInsetsGeometry.symmetric(horizontal: 20),
-              child: TextField(
-                style: Theme
-                    .of(context)
-                    .textTheme
-                    .titleLarge
-                    ?.copyWith(color: Colors.white, fontFamily: 'Janna',),
-                textDirection: TextDirection.rtl,
-                textAlign: TextAlign.right,
+              Padding(
+                padding: const EdgeInsetsGeometry.symmetric(horizontal: 20),
+                child: TextField(
+                  style: Theme
+                      .of(context)
+                      .textTheme
+                      .titleLarge
+                      ?.copyWith(color: Colors.white, fontFamily: 'Janna',),
+                  textDirection: TextDirection.rtl,
+                  textAlign: TextAlign.right,
+                  onChanged: (newText) {
+                    searchBYNewText(newText);
+                  },
 
-                decoration: InputDecoration(
-                  enabledBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: ColorPallete.primaryColor),
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: ColorPallete.primaryColor),
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  labelText: "Sura Name",
-                  labelStyle: Theme.of(context).textTheme.titleMedium,
-                  prefixIcon: Padding(
-                    padding: const EdgeInsets.all(12),
-                    child: Assets.icons.quranInactiveIc.svg(
-                      colorFilter: ColorFilter.mode(
-                        ColorPallete.primaryColor,
-                        BlendMode.srcIn,
+                  decoration: InputDecoration(
+                    enabledBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: ColorPallete.primaryColor),
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: ColorPallete.primaryColor),
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    labelText: "Sura Name",
+                    labelStyle: Theme
+                        .of(context)
+                        .textTheme
+                        .titleMedium,
+                    prefixIcon: Padding(
+                      padding: const EdgeInsets.all(12),
+                      child: Assets.icons.quranInactiveIc.svg(
+                        colorFilter: ColorFilter.mode(
+                          ColorPallete.primaryColor,
+                          BlendMode.srcIn,
+                        ),
+                        width: 16,
+                        height: 16,
                       ),
-                      width: 16,
-                      height: 16,
                     ),
                   ),
                 ),
               ),
-            ),
-            Padding(
-              padding: const EdgeInsetsGeometry.symmetric(horizontal: 20),
-              child: Text(
-                "Most Recently",
-                style: Theme.of(context).textTheme.bodyMedium,
-              ),
-            ),
-            SizedBox(
-              height: 160,
-              child: ListView.separated(
+              Padding(
                 padding: const EdgeInsetsGeometry.symmetric(horizontal: 20),
-                scrollDirection: Axis.horizontal,
+                child: Text(
+                  "Most Recently",
+                  style: Theme
+                      .of(context)
+                      .textTheme
+                      .bodyMedium,
+                ),
+              ),
+              SizedBox(
+                height: 160,
+                child: ListView.separated(
+                  padding: const EdgeInsetsGeometry.symmetric(horizontal: 20),
+                  scrollDirection: Axis.horizontal,
+                  itemBuilder: (context, index) {
+                    return Container(
+                      padding: const EdgeInsets.all(12),
+                      decoration: BoxDecoration(
+                        color: ColorPallete.primaryColor,
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                      child: Row(
+                        spacing: 10,
+
+                        children: [
+                          Column(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              Text(
+                                suralist[index].suraNameEn,
+                                style: Theme
+                                    .of(context)
+                                    .textTheme
+                                    .headlineLarge
+                                    ?.copyWith(color: Colors.black),
+                              ),
+                              Text(
+                                suralist[index].suraNameAr,
+                                style: Theme
+                                    .of(context)
+                                    .textTheme
+                                    .headlineLarge
+                                    ?.copyWith(color: Colors.black),
+                              ),
+                              Text(
+                                suralist[index].suraVersesCount,
+                                style: Theme
+                                    .of(context)
+                                    .textTheme
+                                    .bodyMedium
+                                    ?.copyWith(color: Colors.black),
+                              ),
+                            ],
+                          ),
+                          Assets.images.imgListQuran.image(),
+                        ],
+                      ),
+                    );
+                  },
+                  separatorBuilder: (context, index) {
+                    return SizedBox(width: 10);
+                  },
+                  itemCount: 114,
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsetsGeometry.symmetric(horizontal: 20),
+                child: Text(
+                  "Suras List",
+                  style: Theme
+                      .of(context)
+                      .textTheme
+                      .titleMedium,
+                ),
+              ),
+
+              ListView.separated(
+                shrinkWrap: true,
+                physics: const NeverScrollableScrollPhysics(),
+                padding: EdgeInsets.zero,
                 itemBuilder: (context, index) {
-                  return Container(
-                    padding: const EdgeInsets.all(12),
-                    decoration: BoxDecoration(
-                      color: ColorPallete.primaryColor,
-                      borderRadius: BorderRadius.circular(20),
-                    ),
-                    child: Row(
-                      spacing: 10,
-                      children: [
-                        Column(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            Text(
-                              suralist[index].suraNameEn,
-                              style: Theme.of(context).textTheme.headlineLarge
-                                  ?.copyWith(color: Colors.black),
-                            ),
-                            Text(
-                              suralist[index].suraNameAr,
-                              style: Theme.of(context).textTheme.headlineLarge
-                                  ?.copyWith(color: Colors.black),
-                            ),
-                            Text(
-                              suralist[index].suraVersesCount,
-                              style: Theme.of(context).textTheme.bodyMedium
-                                  ?.copyWith(color: Colors.black),
-                            ),
-                          ],
-                        ),
-                        Assets.images.imgListQuran.image(),
-                      ],
-                    ),
-                  );
+                  int suraIndex = filterList[index];
+                  return SuraCard(suraData: suralist[suraIndex], onTap: () {
+                    Navigator.of(context).pushNamed(
+                        QuranDetailsVeiw.routName,
+                        arguments: suralist[suraIndex]);
+                  },);
                 },
                 separatorBuilder: (context, index) {
-                  return SizedBox(width: 10);
+                  return Divider(
+                    thickness: 2,
+                    indent: 40,
+                    endIndent: 40,
+                    height: 40,
+                  );
                 },
-                itemCount: 114,
+                itemCount: filterList.length,
               ),
-            ),
-            Padding(
-              padding: const EdgeInsetsGeometry.symmetric(horizontal: 20),
-              child: Text(
-                "Suras List",
-                style: Theme.of(context).textTheme.titleMedium,
-              ),
-            ),
-
-            ListView.separated(
-              shrinkWrap: true,
-              physics: const NeverScrollableScrollPhysics(),
-              padding: EdgeInsets.zero,
-              itemBuilder: (context, index) {
-                return SuraCard(suraData: suralist[index], onTap: () {
-                  Navigator.of(context).pushNamed(
-                      QuranDetailsVeiw.routName, arguments: suralist[index]);
-                },);
-              },
-              separatorBuilder: (context, index) {
-                return Divider(
-                  thickness: 2,
-                  indent: 40,
-                  endIndent: 40,
-                  height: 40,
-                );
-              },
-              itemCount: suralist.length,
-            ),
-          ],
+            ],
+          ),
         ),
       ),
+      ),
     );
+  }
+
+  void searchBYNewText(String newText) {
+    List<int>filterSearchList = [];
+    for (int i = 0; i < englishQuranSurahs.length; i++) {
+      if (englishQuranSurahs[i].toLowerCase().contains(newText.toLowerCase())) {
+        filterSearchList.add(i);
+      }
+    }
+    for (int i = 0; i < arabicAuranSuras.length; i++) {
+      if (arabicAuranSuras[i].toLowerCase().contains(newText.toLowerCase())) {
+        filterSearchList.add(i);
+      }
+    }
+    filterList = filterSearchList;
+    setState(() {
+
+    });
   }
 }
